@@ -1,0 +1,31 @@
+html {
+    font-size: 17px;
+}
+@media (max-width: 900px) {
+    html { font-size: 15px; }
+}
+@media (max-width: 400px) {
+    html { font-size: 13px; }
+}
+  
+  /* Modules will scale with document */
+header {
+    font-size: 1.5rem;
+}
+footer {
+    font-size: 1rem;
+}
+  
+  /* Type will scale with modules */
+h1 {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.7em;
+}
+h3 {
+    font-size: 1.2em;
+}
+a,p {
+    font-size:1.1em;
+}
