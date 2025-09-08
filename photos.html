@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos</title>
+    <link rel="stylesheet" href="CSS/htmlstyle.css"> <!--html style, text sizing-->
+    <link rel="stylesheet" href="CSS/navstyle.css"> <!--nav style-->
+    <link rel="stylesheet" href="CSS/scroll.css">
+    <link rel="stylesheet" href="CSS/icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_package/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_package/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_package/favicon-16x16.png">
+    <link rel="manifest" href="favicon_package/site.webmanifest">
+    <link rel="mask-icon" href="favicon_package/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+    .grid{
+        display:grid;
+        grid-template-columns: 85%;
+        position: relative;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .polaroid {
+        background-color: #232124;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 25px;
+    }
+
+    .container {
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+    @media screen and (min-width:800px){
+        .grid{
+            grid-template-columns: 45% 45%;
+            gap:0px 2%;
+        }
+    }
+</style>
+</head>
+<body>
+<nav id="nav">
+<div class="nav-container">
+    <p>MouseVision</p>
+    <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="" class="active">Photos</a></li>
+    </ul>
+</div>
+</nav>
+
+
+<div class="grid">
+<div class="polaroid">
+    <img src="images/DSC_0235 - edited-background(good).webp" alt="Green leaves dark background" style="width:100%">
+    <div class="container">
+    <p>Green leaves with an insect (try to find it)</p>
+    </div>
+</div>
+<div class="polaroid">
+    <img src="images/DSC_0227-edited(good).webp" alt="Meadow clover closeup" style="width:100%">
+    <div class="container">
+    <p>Meadow clover</p>
+    </div>
+</div>
+<div class="polaroid">
+    <img src="images/DSC_0172(good).webp" alt="Vineyard closeup" style="width:100%">
+    <div class="container">
+    <p>Vineyards</p>
+    </div>
+</div>
+<div class="polaroid">
+    <img src="images/DSC_01602(good).webp" alt="Purple bush flower" style="width:100%">
+    <div class="container">
+    <p>Purpe bush flower</p>
+    </div>
+</div>
+<div class="polaroid">
+    <img src="images/DSC_0329(good).webp" alt="Luggage on top of a car" style="width:100%">
+    <div class="container">
+    <p>Packed for travel</p>
+    </div>
+</div>
+<div class="polaroid">
+    <img src="images/DSC_0241(good).webp" alt="Orange flowers" style="width:100%">
+    <div class="container">
+    <p>Orange flowers - not roses (inside joke)</p>
+    </div>
+</div>
+<div class="polaroid">
+    <img src="images/DSC_0275-edited(good).webp" alt="Fluffy bee on lavender" style="width:100%">
+    <div class="container">
+    <p>Fluffy bee on lavender</p>
+    </div>
+</div>
+<div class="polaroid">
+    <img src="images/DSC_0248-edited(good).webp" alt="Brown slug on a road" style="width:100%">
+    <div class="container">
+    <p>Brown slug exceeding speed limits on the street</p>
+    </div>
+</div>
+
+</div><!--end of grid-->
+
+<footer>
+    <a href="#nav" class="scroll-up">
+        <i class="fa-solid fa-angles-up"></i>
+        <span>Back to Top</span>
+    </a>
+    <ul class="icons">
+      <li><a href="https://www.youtube.com/@Mouse_Vision/videos" target="_blank" rel="noreferrer" aria-label="YouTube" title="YouTube" class="youtube">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="none" viewBox="0 0 16 14" aria-hidden="true">
+            <g clip-path="url(#a)">
+                <path fill="currentColor" d="M15.6 2.5c.4 1.4.4 4.4.4 4.4s0 3-.4 4.4c-.2.8-.8 1.4-1.5 1.6-1.4.4-6.1.4-6.1.4s-4.7 0-6-.4c-.8-.2-1.4-.8-1.6-1.6C0 9.9 0 6.9 0 6.9s0-3 .4-4.4c.2-.8.8-1.4 1.5-1.6C3.3.5 8 .5 8 .5s4.7 0 6 .4c.8.2 1.4.8 1.6 1.6M6.4 9.7l4.8-2.8-4.8-2.8z"></path>
+            </g>
+            <defs>
+                <clipPath id="a">
+                    <path fill="currentColor" d="M0 .5h16v13H0z"></path>
+                </clipPath>
+            </defs>
+        </svg>
+      </a></li>
+      <li><a href="https://www.instagram.com/mouse_visi0n/" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram" class="instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 449 449" aria-hidden="true" class="css-jaq9k5"><path fill="currentColor" d="M224.18 109.6c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9m0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7m146.4-194.3c0 14.9-12 26.8-26.8 26.8a26.8 26.8 0 1 1 26.8-26.8m76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8m-47.8 224.5a75.63 75.63 0 0 1-42.6 42.6c-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9a75.63 75.63 0 0 1-42.6-42.6c-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1a75.63 75.63 0 0 1 42.6-42.6c29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9a75.63 75.63 0 0 1 42.6 42.6c11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"></path></svg>
+      </a></li>
+    </ul>
+    <p style="margin-top: 4px; color: #ffffff;">malypotkan009@gmail.com</p>
+    <p>© 2025 MouseVision</p>
+</footer>
+
+<!-- <script>
+    // JS for hamburger menu
+  function toggleMenu() {
+      var menu = document.getElementById("menu");
+      if (menu.style.display === "block") {
+          menu.style.display = "none";
+      } else {
+          menu.style.display = "block";
+      }
+  }
+</script> -->
+
+</body>
+</html>

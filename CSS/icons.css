@@ -1,0 +1,25 @@
+.icons {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 24px; /* space between icons */
+    padding: 0;
+    margin: 0;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically if items have different heights */
+    
+}
+
+.icons li a svg {
+    width: 32px;
+    height: 32px;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.icons li a.youtube:hover svg {
+    color: #FF0000;
+}
+.icons li a.instagram:hover svg{
+    color: #E1306C;
+}

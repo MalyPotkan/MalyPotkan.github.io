@@ -1,0 +1,54 @@
+.scroll-down {
+    position: absolute;
+    bottom: 30px;       /* space from bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: white;       /* default color */
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s;
+    z-index: 1000;
+}
+
+.scroll-down i {
+    font-size: 18px;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down:hover {
+    color: white;
+}
+
+.scroll-up {
+    bottom: 30px;       /* space from bottom */
+    left: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: white;       /* default color */
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s;
+    margin-bottom: 5%;
+}
+
+.scroll-up i {
+    font-size: 18px;
+    animation: bounce 2s infinite reverse;
+}
+
+.scroll-up:hover {
+    color: white;
+}
+/* bounce animation */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
