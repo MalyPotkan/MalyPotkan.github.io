@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MouseVision webpage</title>
+    <link rel="stylesheet" href="CSS/htmlstyle.css"> <!--html style, text sizing-->
+    <link rel="stylesheet" href="CSS/navstyle.css"> <!--nav style-->
+    <link rel="stylesheet" href="CSS/scroll.css">
+    <link rel="stylesheet" href="CSS/icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <!--up and down arrows scroll-->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_package/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_package/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_package/favicon-16x16.png">
+    <link rel="manifest" href="favicon_package/site.webmanifest">
+    <link rel="mask-icon" href="favicon_package/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+   <style>
+    img{
+        position:relative;
+        left:0;
+        width:100%;
+        max-height: 300px;
+        border-radius: 50%;
+    }
+    .hero-img {
+        width:100%;
+        height:100vh;
+        background: url(images/DSC_0277-edited_good.jpg) no-repeat center;
+        position:relative;
+        background-size: cover;
+        /* mask-image: linear-gradient(
+            rgb(0 0 0 / 1)40%,
+            rgb(0 0 0 / 0.5) 75%,
+            rgb(0 0 0 / 0)
+        ); */
+        padding:0%;
+        overflow: hidden;
+    }
+
+    .hero-img::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        /* gradient from transparent to next section color */
+        background: linear-gradient(
+            to bottom,
+            rgba(35,33,36,0) 0%,
+            rgba(35,33,36,0.2) 60%,
+            rgba(35,33,36,0.5) 75%,
+            #232124 100% 
+        );
+    }
+    
+    .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        max-width: 45vh;
+        max-height: auto;
+    }
+
+    .mouseimg{
+        width:60%;
+        height: auto;
+    }
+
+    .intro{
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        text-align: left;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    .logo{
+        max-width: 300px;
+        height: auto;
+        margin: 0 auto;
+    }
+    @media (min-width: 720px){
+        .intro{
+            grid-template-columns: 6fr 4fr;
+            text-align: left;
+        }
+        .logo {
+            max-width: 500px;
+            max-height: 300px;
+            object-fit: contain;
+            padding-top: 20px;
+        }
+        
+    }
+    @media (min-width:1150px){
+        .logo{
+            padding-top: 0px;
+        }
+    }
+
+    .experience{
+        display: flex;
+        flex-direction: column;
+        gap:32px;
+        padding:30px 20px;
+        padding-top: 0;
+        background-color:#4a4055;
+        margin-top: 0px;
+    }
+    .experience-item{
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+    .experience-photos{
+        order:2;
+        display: flex;
+        flex: 0 0 auto;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+    .experience-text {
+        text-align: left;
+        order: 1;
+        width:100%;
+    }
+    .experience-text h2{
+        margin-bottom: 10px;
+        color: #f2d76c;
+    }
+    .experience-text p{
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    .experience ul{
+        padding: 20px 30px;
+        padding-right: 0px;
+        margin-right: 3vw;
+        border: 2px dashed #ffffff;
+    }
+    .carousel {
+        width: 100%;
+        max-width: 720px;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+        perspective: 1000px;
+    }
+
+    .track {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: transform 0.45s cubic-bezier(.25,.8,.25,1);
+        will-change: transform;
+        touch-action: pan-y;
+    }
+
+    .slide {
+        flex: 0 0 100%;
+        max-width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: auto;
+    }
+
+    .slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+        object-fit: cover;
+        object-position: center;
+        user-select: none;
+        -webkit-user-drag: none;
+        -moz-user-drag: none;
+        -ms-user-drag: none;
+        pointer-events: none;      /* lets swipe work anywhere */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        transition: transform 0.45s cubic-bezier(.25,.8,.25,1),
+                    filter 0.45s ease,
+                    opacity 0.45s ease;
+    }
+
+    .slide:not(.active) img {
+        transform: scale(0.85);
+        filter: blur(4px) saturate(.9);
+        opacity: 0.72;
+        z-index: 1;
+    }
+
+    .slide.active img {
+        transform: scale(1);
+        filter: none;
+        opacity: 1;
+        z-index: 2;
+    }
+
+    @media (min-width:768px){
+        .experience-item{
+            flex-direction: row;
+            align-items: center;
+            gap: 40px;
+        }
+        .experience-item:nth-child(even){
+            flex-direction: row-reverse;
+        }
+        .experience-text{
+            flex:1 1 50%;
+        }
+        .experience-photos {
+            flex: 1 1 50%;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        .track {
+           gap: 8px;
+        }
+     }
+    @media (max-width: 480px) {
+        .slide {
+            flex-basis: 86%;
+            max-width: 86%;
+        }
+        .track { 
+            gap: 0px; }
+        .carousel { 
+            max-width: 100%; }
+    }
+
+    .button {
+        position: relative;
+        display:inline-block;
+        width: 243px;
+        height: 72px;
+        background: url('button1.svg') no-repeat center/cover;
+        overflow: visible;
+    }
+
+    .button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 243px;
+        height: 72px; 
+        transform: translate(-50%, -50%);
+        background: url('button2.svg') no-repeat center/contain;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .button:hover::after {
+        opacity: 1;
+    }
+    .button-center{
+        display: flex;
+        justify-content: center;
+        padding:10px 0px;
+    }
+   .divider {
+        background: url("stacked-peaks-haikei3.svg") no-repeat center bottom;
+        background-size: cover;
+        width: 100%;
+        padding-bottom: 16.67%;
+    }
+
+    .divider2 {
+        background: url("stacked-peaks-haikei5.svg") no-repeat center bottom;
+        background-size: cover;
+        width: 100%;
+        padding-bottom: 16.67%;
+    }
+    </style>
+</head>
+<body>
+    <div class="hero-img">
+    <nav id="nav">
+    <div class="nav-container">
+        <p>MouseVision</p>
+        <ul class="nav-menu">
+            <li><a href="" class="active">Home</a></li>
+            <li><a href="photos.html">Photos</a></li>
+        </ul>
+    </div>
+    </nav>
+    <div class="hero-text">
+        <object class="mouseimg" data="MVlogo3.svg" type="image/svg+xml" aria-label="circular logo with letters MV and a mouse"></object>
+    </div>
+  <a href="#intro" class="scroll-down">
+    <span>About Me</span>
+    <i class="fa-solid fa-angles-down"></i>
+  </a>
+</div>
+
+<main id="main">
+
+<section class="intro" id="intro">
+<div class="text">
+<h1>Hey, I am MouseVision!</h1>
+<p>
+    I am a Slovak digital design student with a love for creativity in many forms.<br> The name <i>MouseVison</i> comes from a nickname my friends gave me -"Mouse"- and my desire to share my vision with the world through art, design and storytelling.
+</p>
+</div>
+<figure class="logo">
+<img src="images/Firefly-mouse-logo-simple-cropped78281-photoaidcom-cropped.png" alt="mouse logo">
+<p style="color:grey;text-align: center;font-size: 10px;margin: 0px;">this logo was created by AI</p>
+</figure>
+</section>
+
+<div class="divider"></div>
+
+<section class="experience">
+ <div class="experience-item">
+  <div class="experience-text">
+   <h2 style="margin-top: 10px;">Drawing</h2>
+   <p> Art was my first dive into the sea of creativity. I grew up sketching and attended art classes alongside my regular school. <br>While I don't draw as often as before, I still create digitally on my tablet when inspiration strikes.</p>
+  </div>
+  <div class="experience-photos">
+    <img src="" alt="photo 1">
+    <img src="" alt="photo 2">
+  </div>
+ </div>
+
+ <div class="experience-item">
+  <div class="experience-text">
+    <h2>Photography</h2>
+    <p>Recently I discovered a passion for photography. My camera is a way to capture the quiet beauty of nature, animals, and small details that might otherwise go unnoticed.
+    </p>
+    <div class="button-center">
+        <a href="photos.html" class="button"></a>
+    </div>
+  </div>
+  <div class="experience-photos">
+    <div class="carousel">
+        <div class="track">
+            <div class="slide active">
+                <img src="images/DSC_0241(good).webp" alt="Green leafy archway with dreamy pathway in the middle">
+            </div>
+            <div class="slide">
+                <img src="images/DSC_0354edited-post.jpg" alt="A hand feeding goats">
+            </div>
+            <div class="slide">
+                <img src="images/DSC_0227-edited(good).webp" alt="Momma deer looking for her baby in the forest">
+            </div>
+        </div>
+    </div>
+  </div>
+ </div>
+
+ <div class="experience-item">
+  <div class="experience-text">
+   <h2>Graphics & Design</h2>
+   <p> My interest in writing later led me to design book covers for amateur writers, exploring Photoshop CS6 and building a foundation in design that I continue to expand today.</p>
+  </div>
+  <div class="experience-photos">
+    <img src="" alt="photo 1">
+    <img src="" alt="photo 2">
+ </div>
+
+ </div>
+  <div class="experience-item">
+  <div class="experience-text">
+   <h2>Websites</h2>
+   <p> One of my first projects is building a working library website for my former school. It’s live, functional, and still in use—proof of what I can do when I combine design with purpose.</p>
+  </div>
+  <div class="experience-photos">
+    <img src="" alt="photo 1">
+    <img src="" alt="photo 2">
+  </div>
+ </div>
+
+ <div class="experience-item">
+  <div class="experience-text">
+   <h2>Certificates</h2>
+   <p> Coursera certificates in design and related fields.<br>
+    These courses gave me a strong foundation in web technologies, which I later applied when building the library website project.
+   </p>
+  </div>
+  <div style="text-align: left;" class="experience-photos">
+    <ul><li>Introduction to HTML5</li>
+        <li>Introduction to CSS3</li>
+        <li>Advanced Styling with Responsive Design</li>
+        <li>Interactivity with JavaScript</li>
+    </ul>
+  </div>
+ </div>
+</section>
+<div class="divider2"></div>
+</main>
+
+<footer>
+    <a href="#nav" class="scroll-up">
+        <i class="fa-solid fa-angles-up"></i>
+        <span>Back to Top</span>
+    </a>
+    <ul class="icons">
+      <li><a href="https://www.youtube.com/@Mouse_Vision/videos" target="_blank" rel="noreferrer" aria-label="YouTube" title="YouTube" class="youtube">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="none" viewBox="0 0 16 14" aria-hidden="true">
+            <g clip-path="url(#a)">
+                <path fill="currentColor" d="M15.6 2.5c.4 1.4.4 4.4.4 4.4s0 3-.4 4.4c-.2.8-.8 1.4-1.5 1.6-1.4.4-6.1.4-6.1.4s-4.7 0-6-.4c-.8-.2-1.4-.8-1.6-1.6C0 9.9 0 6.9 0 6.9s0-3 .4-4.4c.2-.8.8-1.4 1.5-1.6C3.3.5 8 .5 8 .5s4.7 0 6 .4c.8.2 1.4.8 1.6 1.6M6.4 9.7l4.8-2.8-4.8-2.8z"></path>
+            </g>
+            <defs>
+                <clipPath id="a">
+                    <path fill="currentColor" d="M0 .5h16v13H0z"></path>
+                </clipPath>
+            </defs>
+        </svg>
+      </a></li>
+      <li><a href="https://www.instagram.com/mouse_visi0n/" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram" class="instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 449 449" aria-hidden="true" class="css-jaq9k5">
+            <path fill="currentColor" d="M224.18 109.6c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9m0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7m146.4-194.3c0 14.9-12 26.8-26.8 26.8a26.8 26.8 0 1 1 26.8-26.8m76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8m-47.8 224.5a75.63 75.63 0 0 1-42.6 42.6c-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9a75.63 75.63 0 0 1-42.6-42.6c-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1a75.63 75.63 0 0 1 42.6-42.6c29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9a75.63 75.63 0 0 1 42.6 42.6c11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1">
+            </path>
+        </svg>
+      </a></li>
+    </ul>
+    <p style="margin-top: 4px; color: #ffffff;">malypotkan009@gmail.com</p>
+    <p>© 2025 MouseVision</p>
+</footer>
+
+<!-- <script>
+    // JS for hamburger menu
+  function toggleMenu() {
+      var menu = document.getElementById("menu");
+      if (menu.style.display === "block") {
+          menu.style.display = "none";
+      } else {
+          menu.style.display = "block";
+      }
+  }
+</script> -->
+<script>
+    const track = document.querySelector('.track');
+const slides = Array.from(document.querySelectorAll('.slide'));
+let current = 1; // start on second slide
+
+// Compute center positions of each slide
+function calcPositions() {
+  const wrap = track.parentElement;
+  const wrapW = wrap.clientWidth;
+  return slides.map(slide => {
+    const w = slide.offsetWidth;
+    const left = slide.offsetLeft;
+    return -(left - (wrapW - w)/2);
+  });
+}
+
+let positions = calcPositions();
+
+// Center slide by index
+function centerSlide(index, instant=false){
+  if(index<0) index=0;
+  if(index>slides.length-1) index=slides.length-1;
+  current=index;
+  slides.forEach((s,i)=>s.classList.toggle('active',i===current));
+  track.style.transition = instant ? 'none' : 'transform 0.45s cubic-bezier(.25,.8,.25,1)';
+  track.style.transform = `translateX(${positions[current]}px)`;
+}
+
+// Drag variables
+let startX=0, startTransform=0, dragging=false;
+
+function getTransformX(){ 
+  const t = getComputedStyle(track).transform;
+  return t==='none'?0:new DOMMatrix(t).m41;
+}
+
+track.addEventListener('pointerdown', e=>{
+  dragging=true;
+  track.setPointerCapture(e.pointerId);
+  startX=e.clientX;
+  startTransform=getTransformX();
+  track.style.transition='none';
+});
+
+track.addEventListener('pointermove', e=>{
+  if(!dragging) return;
+  const dx = e.clientX - startX;
+  track.style.transform = `translateX(${startTransform+dx}px)`;
+});
+
+function endDrag(e){
+  if(!dragging) return;
+  dragging=false;
+  const dx = e.clientX - startX;
+
+  // find closest slide to current transform
+  const currentX = getTransformX();
+  let closestIndex = 0;
+  let minDiff = Infinity;
+  positions.forEach((pos,i)=>{
+    const diff = Math.abs(pos - currentX);
+    if(diff < minDiff){
+      minDiff = diff;
+      closestIndex=i;
+    }
+  });
+  centerSlide(closestIndex);
+}
+
+track.addEventListener('pointerup', endDrag);
+track.addEventListener('pointercancel', endDrag);
+track.addEventListener('lostpointercapture', endDrag);
+
+// Keyboard support
+document.addEventListener('keydown', e=>{
+  if(e.key==='ArrowLeft') centerSlide(current-1);
+  if(e.key==='ArrowRight') centerSlide(current+1);
+});
+
+// Resize recalculation
+window.addEventListener('resize', ()=>{
+  positions = calcPositions();
+  centerSlide(current,true);
+});
+
+// Init
+positions = calcPositions();
+centerSlide(current,true);
+</script>
+</body>
+</html>
